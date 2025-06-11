@@ -2,7 +2,9 @@ package com.todo.todoarqhexagonal.task.domain.ports.in;
 
 import com.todo.todoarqhexagonal.task.domain.models.Task;
 
-public interface CreateTaskUseCase {
+import java.util.Optional;
 
-    Task create(Task task);
+public interface UpdateTaskUseCase {
+
+    Optional<Task> update(Long id, Task task);
 }
