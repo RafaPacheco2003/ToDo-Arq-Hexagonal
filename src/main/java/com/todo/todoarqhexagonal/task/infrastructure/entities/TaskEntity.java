@@ -1,32 +1,31 @@
-package com.todo.todoarqhexagonal.task.domain.models;
+package com.todo.todoarqhexagonal.task.infrastructure.entities;
+
+
+import jakarta.persistence.*;
 
 import java.util.Date;
 
-public class Task {
+@Table(name = "tasks")
+@Entity
+public class TaskEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long taskId;
+
     private String title;
     private String description;
     private Date dateLimite;
     private Date dateCreation;
 
-
-    public Task() {
+    public TaskEntity() {
     }
-
-    public Task(Long taskId, String title, String description, Date dateLimite, Date dateCreation) {
+    public TaskEntity(Long taskId, String title, String description, Date dateLimite, Date dateCreation) {
         this.taskId = taskId;
         this.title = title;
         this.description = description;
         this.dateLimite = dateLimite;
         this.dateCreation = dateCreation;
-    }
-    public Long getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(Long taskId) {
-        this.taskId = taskId;
     }
 
     public Date getDateCreation() {
@@ -59,5 +58,13 @@ public class Task {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Long getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(Long taskId) {
+        this.taskId = taskId;
     }
 }
