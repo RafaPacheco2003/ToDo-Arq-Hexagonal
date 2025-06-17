@@ -6,6 +6,7 @@ import com.todo.todoarqhexagonal.task.application.usecases.DeteleTaskUseCaseImpl
 import com.todo.todoarqhexagonal.task.application.usecases.RetrieveTaskUseCaseImpl;
 import com.todo.todoarqhexagonal.task.application.usecases.UpdateTaskUseCaseImpl;
 import com.todo.todoarqhexagonal.task.domain.ports.out.TaskRepositoryPort;
+import com.todo.todoarqhexagonal.user.domain.ports.out.UserRepositoryPort;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,11 +14,11 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationConfig {
 
     @Bean
-    public TaskService taskService(TaskRepositoryPort taskRepository) {
+    public TaskService taskService(TaskRepositoryPort taskRepository, UserRepositoryPort userRepository) {
         return new TaskService(
-                new CreateTaskUseCaseImpl(taskRepository),
+                new CreateTaskUseCaseImpl(taskRepository,userRepository ),
                 new RetrieveTaskUseCaseImpl(taskRepository),
-                new UpdateTaskUseCaseImpl(taskRepository),
+                new UpdateTaskUseCaseImpl(taskRepository, userRepository),
                 new DeteleTaskUseCaseImpl(taskRepository)
         );
 

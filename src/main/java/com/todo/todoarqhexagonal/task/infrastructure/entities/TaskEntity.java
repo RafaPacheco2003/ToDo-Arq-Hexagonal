@@ -1,6 +1,7 @@
 package com.todo.todoarqhexagonal.task.infrastructure.entities;
 
 
+import com.todo.todoarqhexagonal.user.infrastructure.entities.UserEntity;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -18,14 +19,29 @@ public class TaskEntity {
     private Date dateLimite;
     private Date dateCreation;
 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
     public TaskEntity() {
     }
-    public TaskEntity(Long taskId, String title, String description, Date dateLimite, Date dateCreation) {
+
+    public TaskEntity(Long taskId, String title, String description, Date dateLimite, Date dateCreation, UserEntity user) {
         this.taskId = taskId;
         this.title = title;
         this.description = description;
         this.dateLimite = dateLimite;
         this.dateCreation = dateCreation;
+        this.user = user;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
     public Date getDateCreation() {

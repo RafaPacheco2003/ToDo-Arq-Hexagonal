@@ -27,8 +27,8 @@ public class TaskService implements CreateTaskUseCase, RetrieveTaskUseCase, Upda
 
 
     @Override
-    public Task create(Task task) {
-        return createTaskUseCase.create(task);
+    public Task create(Task task, Long userId) {
+        return createTaskUseCase.create(task, userId);
     }
 
     @Override

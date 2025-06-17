@@ -5,5 +5,6 @@ import java.util.Date;
 public record TaskRequest(
         String title,
         String description,
-        Date dateLimite
+        Date dateLimite,
+        Long userId
 ) {}

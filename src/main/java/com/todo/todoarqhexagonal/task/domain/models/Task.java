@@ -9,18 +9,31 @@ public class Task {
     private String description;
     private Date dateLimite;
     private Date dateCreation;
+    private Long userId;
+
 
 
     public Task() {
     }
 
-    public Task(Long taskId, String title, String description, Date dateLimite, Date dateCreation) {
+    public Task(Long taskId, String title, String description, Date dateLimite, Date dateCreation, Long userId) {
         this.taskId = taskId;
         this.title = title;
         this.description = description;
         this.dateLimite = dateLimite;
         this.dateCreation = dateCreation;
+        this.userId = userId;
     }
+
+    // Getters y setters...
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     public Long getTaskId() {
         return taskId;
     }
